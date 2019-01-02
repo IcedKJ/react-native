@@ -78,16 +78,31 @@ import javax.annotation.Nullable;
         ReactStylesDiffMap props) {
       try {
         if (mIndex == null) {
-          VIEW_MGR_ARGS[0] = viewToUpdate;
-          VIEW_MGR_ARGS[1] = extractProperty(props);
-          mSetter.invoke(viewManager, VIEW_MGR_ARGS);
-          Arrays.fill(VIEW_MGR_ARGS, null);
+          Object[] LOCAL_VIEW_MGR_ARGS = new Object[VIEW_MGR_ARGS.length];
+
+          LOCAL_VIEW_MGR_ARGS[0] = viewToUpdate;
+          LOCAL_VIEW_MGR_ARGS[1] = extractProperty(props);
+          mSetter.invoke(viewManager, LOCAL_VIEW_MGR_ARGS);
+          Arrays.fill(LOCAL_VIEW_MGR_ARGS, null);
+
+//          VIEW_MGR_ARGS[0] = viewToUpdate;
+//          VIEW_MGR_ARGS[1] = extractProperty(props);
+//          mSetter.invoke(viewManager, VIEW_MGR_ARGS);
+//          Arrays.fill(VIEW_MGR_ARGS, null);
         } else {
-          VIEW_MGR_GROUP_ARGS[0] = viewToUpdate;
-          VIEW_MGR_GROUP_ARGS[1] = mIndex;
-          VIEW_MGR_GROUP_ARGS[2] = extractProperty(props);
-          mSetter.invoke(viewManager, VIEW_MGR_GROUP_ARGS);
-          Arrays.fill(VIEW_MGR_GROUP_ARGS, null);
+          Object[] LOCAL_VIEW_MGR_GROUP_ARGS = new Object[VIEW_MGR_GROUP_ARGS.length];
+
+          LOCAL_VIEW_MGR_GROUP_ARGS[0] = viewToUpdate;
+          LOCAL_VIEW_MGR_GROUP_ARGS[1] = mIndex;
+          LOCAL_VIEW_MGR_GROUP_ARGS[2] = extractProperty(props);
+          mSetter.invoke(viewManager, LOCAL_VIEW_MGR_GROUP_ARGS);
+          Arrays.fill(LOCAL_VIEW_MGR_GROUP_ARGS, null);
+
+//          VIEW_MGR_GROUP_ARGS[0] = viewToUpdate;
+//          VIEW_MGR_GROUP_ARGS[1] = mIndex;
+//          VIEW_MGR_GROUP_ARGS[2] = extractProperty(props);
+//          mSetter.invoke(viewManager, VIEW_MGR_GROUP_ARGS);
+//          Arrays.fill(VIEW_MGR_GROUP_ARGS, null);
         }
       } catch (Throwable t) {
         FLog.e(ViewManager.class, "Error while updating prop " + mPropName, t);
@@ -101,14 +116,27 @@ import javax.annotation.Nullable;
         ReactStylesDiffMap props) {
       try {
         if (mIndex == null) {
-          SHADOW_ARGS[0] = extractProperty(props);
-          mSetter.invoke(nodeToUpdate, SHADOW_ARGS);
-          Arrays.fill(SHADOW_ARGS, null);
+          Object[] LOCAL_SHADOW_ARGS = new Object[SHADOW_ARGS.length];
+
+          LOCAL_SHADOW_ARGS[0] = extractProperty(props);
+          mSetter.invoke(nodeToUpdate, LOCAL_SHADOW_ARGS);
+          Arrays.fill(LOCAL_SHADOW_ARGS, null);
+
+//          SHADOW_ARGS[0] = extractProperty(props);
+//          mSetter.invoke(nodeToUpdate, SHADOW_ARGS);
+//          Arrays.fill(SHADOW_ARGS, null);
         } else {
-          SHADOW_GROUP_ARGS[0] = mIndex;
-          SHADOW_GROUP_ARGS[1] = extractProperty(props);
-          mSetter.invoke(nodeToUpdate, SHADOW_GROUP_ARGS);
-          Arrays.fill(SHADOW_GROUP_ARGS, null);
+          Object[] LOCAL_GROUP_SHADOW_ARGS = new Object[SHADOW_GROUP_ARGS.length];
+
+          LOCAL_GROUP_SHADOW_ARGS[0] = mIndex;
+          LOCAL_GROUP_SHADOW_ARGS[1] = extractProperty(props);
+          mSetter.invoke(nodeToUpdate, LOCAL_GROUP_SHADOW_ARGS);
+          Arrays.fill(LOCAL_GROUP_SHADOW_ARGS, null);
+
+//          SHADOW_GROUP_ARGS[0] = mIndex;
+//          SHADOW_GROUP_ARGS[1] = extractProperty(props);
+//          mSetter.invoke(nodeToUpdate, SHADOW_GROUP_ARGS);
+//          Arrays.fill(SHADOW_GROUP_ARGS, null);
         }
       } catch (Throwable t) {
         FLog.e(ViewManager.class, "Error while updating prop " + mPropName, t);
